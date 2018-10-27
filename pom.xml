@@ -151,6 +151,15 @@
 		</plugins>
 	</build>
 	
+		<!-- REPOSITORIES & PLUGIN REPOSITORIES -->
+	<repositories>
+		<!-- public release repo -->
+		<repository>
+			<id>solveapuzzle-repo</id>
+			<url>https://s3-ap-southeast-2.amazonaws.com/solveapuzzle-repo/release/</url>
+		</repository>
+	</repositories>
+	
 	<scm>
 		<url>https://github.com/npiper/bpm.container</url>
 		<developerConnection>scm:git:https://github.com/npiper/bpm.container.git</developerConnection>
