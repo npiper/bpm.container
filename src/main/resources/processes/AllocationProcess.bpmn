@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <message id="allocation_message" name="allocation_message"></message>
+  <message id="message_two" name="messageTwo"></message>
+  <process id="allocationProcess" name="allocationProcess" isExecutable="true">
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway" default="NDC"></exclusiveGateway>
+    <subProcess id="frozen-subprocess" name="frozen-subprocess">
+      <startEvent id="startevent2" name="Start"></startEvent>
+      <endEvent id="endevent3" name="End"></endEvent>
+      <scriptTask id="scripttask2" name="Script Task" scriptFormat="groovy" activiti:autoStoreVariables="false">
+        <script>println "NDC"</script>
+      </scriptTask>
+      <sequenceFlow id="flow23" sourceRef="startevent2" targetRef="scripttask2"></sequenceFlow>
+      <sequenceFlow id="flow24" sourceRef="scripttask2" targetRef="endevent3"></sequenceFlow>
+    </subProcess>
+    <sequenceFlow id="Frozen" name="AllocationType-Frozen" sourceRef="exclusivegateway1" targetRef="frozen-subprocess"></sequenceFlow>
+    <startEvent id="messagestartevent1" name="Allocatable-StockEvent">
+      <messageEventDefinition messageRef="allocation_message"></messageEventDefinition>
+    </startEvent>
+    <subProcess id="NDC-subprocess" name="NDC-subprocess">
+      <startEvent id="startevent1" name="Start"></startEvent>
+      <endEvent id="endevent2" name="End"></endEvent>
+      <scriptTask id="scripttask1" name="Log" scriptFormat="groovy" activiti:autoStoreVariables="false">
+        <script>println "Frozen"</script>
+      </scriptTask>
+      <sequenceFlow id="flow14" sourceRef="startevent1" targetRef="scripttask1"></sequenceFlow>
+      <sequenceFlow id="flow15" sourceRef="scripttask1" targetRef="endevent2"></sequenceFlow>
+    </subProcess>
+    <sequenceFlow id="NDC" name="NDC" sourceRef="exclusivegateway1" targetRef="NDC-subprocess"></sequenceFlow>
+    <scriptTask id="scripttask3" name="Script Task" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>println "Allocation message ${person}"</script>
+    </scriptTask>
+    <sequenceFlow id="flow25" sourceRef="messagestartevent1" targetRef="scripttask3"></sequenceFlow>
+    <sequenceFlow id="flow26" sourceRef="scripttask3" targetRef="exclusivegateway1"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_allocationProcess">
+    <bpmndi:BPMNPlane bpmnElement="allocationProcess" id="BPMNPlane_allocationProcess">
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="184.0" y="100.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="frozen-subprocess" id="BPMNShape_frozen-subprocess">
+        <omgdc:Bounds height="101.0" width="272.0" x="309.0" y="30.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startevent2" id="BPMNShape_startevent2">
+        <omgdc:Bounds height="35.0" width="35.0" x="326.0" y="64.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent3" id="BPMNShape_endevent3">
+        <omgdc:Bounds height="35.0" width="35.0" x="510.0" y="64.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask2" id="BPMNShape_scripttask2">
+        <omgdc:Bounds height="55.0" width="105.0" x="390.0" y="54.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="messagestartevent1" id="BPMNShape_messagestartevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="30.0" y="23.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="NDC-subprocess" id="BPMNShape_NDC-subprocess">
+        <omgdc:Bounds height="205.0" width="205.0" x="309.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="330.0" y="267.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent2" id="BPMNShape_endevent2">
+        <omgdc:Bounds height="35.0" width="35.0" x="460.0" y="267.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask1" id="BPMNShape_scripttask1">
+        <omgdc:Bounds height="55.0" width="105.0" x="364.0" y="320.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask3" id="BPMNShape_scripttask3">
+        <omgdc:Bounds height="55.0" width="105.0" x="60.0" y="111.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow23" id="BPMNEdge_flow23">
+        <omgdi:waypoint x="361.0" y="81.0"></omgdi:waypoint>
+        <omgdi:waypoint x="390.0" y="81.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow24" id="BPMNEdge_flow24">
+        <omgdi:waypoint x="495.0" y="81.0"></omgdi:waypoint>
+        <omgdi:waypoint x="510.0" y="81.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Frozen" id="BPMNEdge_Frozen">
+        <omgdi:waypoint x="224.0" y="120.0"></omgdi:waypoint>
+        <omgdi:waypoint x="309.0" y="80.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="39.0" width="100.0" x="225.0" y="131.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow14" id="BPMNEdge_flow14">
+        <omgdi:waypoint x="347.0" y="302.0"></omgdi:waypoint>
+        <omgdi:waypoint x="416.0" y="320.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
+        <omgdi:waypoint x="416.0" y="320.0"></omgdi:waypoint>
+        <omgdi:waypoint x="477.0" y="302.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="NDC" id="BPMNEdge_NDC">
+        <omgdi:waypoint x="204.0" y="140.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="282.0"></omgdi:waypoint>
+        <omgdi:waypoint x="309.0" y="282.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="13.0" width="100.0" x="204.0" y="140.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow25" id="BPMNEdge_flow25">
+        <omgdi:waypoint x="47.0" y="58.0"></omgdi:waypoint>
+        <omgdi:waypoint x="112.0" y="111.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow26" id="BPMNEdge_flow26">
+        <omgdi:waypoint x="165.0" y="138.0"></omgdi:waypoint>
+        <omgdi:waypoint x="184.0" y="120.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

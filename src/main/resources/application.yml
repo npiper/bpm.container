@@ -1,0 +1,13 @@
+management.security.enabled: true
+spring.boot.admin.url: http://localhost:8080
+endpoints.actuator.enabled: true
+endpoints.logfile.enabled: true  
+endpoints.health.enabled: true
+endpoints.health.sensitive: false
+
+management.security.role: SUPERUSER
+security.user.name: admin 
+security.user.password: secret123
+security.require_ssl: false 
+security.basic.enabled: true
+
