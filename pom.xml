@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>neilpiper.me</groupId>
-	<artifactId>bpmcontainer</artifactId>
+	<artifactId>bpm.container</artifactId>
 	<version>0.0.1_${revision}</version>
-	<name>bpmcontainer</name>
+	<name>bpm.container</name>
 	<description>Run a BPM image in a container</description>
 
 	<parent>
@@ -150,4 +150,10 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<scm>
+		<url>https://github.com/npiper/bpm.container</url>
+		<developerConnection>scm:git:https://github.com/npiper/bpm.container.git</developerConnection>
+	</scm>	
+	
 </project>
