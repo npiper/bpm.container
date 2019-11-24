@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>neilpiper.me</groupId>
 	<artifactId>bpm.container</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>bpm.container</name>
 	<description>Run a BPM image in a container</description>
 
