@@ -1,4 +1,17 @@
-# References
+# Activiti BPM Modeller configuration
+
+
+## Install on MacOS
+
+Run `./installActiviti.sh` convenience methods to remove the manual steps of setting the Local IP address and
+fixing the `rabbitmq` volume mount in `docker-compose.yml`
+
+https://activiti.gitbook.io/activiti-7-developers-guide/getting-started/getting-started-activiti-cloud/getting-started-docker-compose
+
+https://hub.alfresco.com/t5/alfresco-process-services/activiti-installation-in-linux-by-docker-compose-failed-at/td-p/297026
+
+
+## References
 
 https://www.activiti.org/quick-start
 

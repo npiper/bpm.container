@@ -1,3 +1,6 @@
+#Activiti cloud example DIR
+/activiti-cloud-examples
+
 # Eclipse files
 .project
 .classpath
