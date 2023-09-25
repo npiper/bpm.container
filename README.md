@@ -11,6 +11,10 @@ https://activiti.gitbook.io/activiti-7-developers-guide/getting-started/getting-
 https://hub.alfresco.com/t5/alfresco-process-services/activiti-installation-in-linux-by-docker-compose-failed-at/td-p/297026
 
 
+Go to:   http://$DOCKER_IP/modeling
+
+Keycloak credentials _modeler/password_
+
 ## References
 
 https://www.activiti.org/quick-start
