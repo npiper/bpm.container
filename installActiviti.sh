@@ -28,7 +28,10 @@ fi
 
 cd ./activiti-cloud-examples/docker-compose
 mkdir -p rabbitmq-data
-sed -i '' 's/- rabbitmq-data$/- rabbitmq-data:\/var\/lib\/rabbitmq/' ./activiti-cloud-examples/docker-compose/docker-compose.yml
+
+
+sed -i '' 's/- rabbitmq-data$/- rabbitmq-data:\/var\/lib\/rabbitmq/' "./docker-compose.yml"
+
 
 make modeler && make application
 
